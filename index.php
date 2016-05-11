@@ -38,7 +38,7 @@
 
 /*
  *---------------------------------------------------------------
- * APPLICATION ENVIRONMENTfdsafsdfsd
+ * APPLICATION ENVIRONMENTtest
  *---------------------------------------------------------------
  *
  * You can load different configurations depending on your
