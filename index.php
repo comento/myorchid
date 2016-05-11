@@ -38,7 +38,7 @@
 
 /*
  *---------------------------------------------------------------
- * APPLICATION ENVIRONMENTfdsafsdfsd
+ * APPLICATION ENVIRONMENT willdeletethistoo only :)
  *---------------------------------------------------------------
  *
  * You can load different configurations depending on your
