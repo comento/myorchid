@@ -1,0 +1,1 @@
+{"type":"php","detailedtype":"default","author":"6240278_anbag_github","name":"myorchid","description":"","date":"2016/5/19 3:22:50","storage":"container","plugins":{"goorm.plugin.php":{"plugin.php.deploy_path":"/var/www/html/","plugin.php.main":"index.php","plugin.php.webview_type":"tab"}},"is_user_plugin":false}
