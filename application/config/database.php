@@ -74,11 +74,8 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=calc2te',
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => 'he1193711',
-	'database' => 'calc2te',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
