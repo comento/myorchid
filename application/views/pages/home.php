@@ -1,4 +1,2 @@
 <?php
-
-echo "안녕 세상아..";
-?>
+echo "test alpha server";
