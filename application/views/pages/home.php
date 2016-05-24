@@ -1,2 +1,2 @@
 <?php
-echo "test alpha server...2";
+echo "hotfix";
