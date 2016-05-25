@@ -26,7 +26,6 @@ class Actions extends CI_Controller {
 				}else{
 					$query = $this->actions_model->join($name);	
 					$row = $query->last_row();
-					setcookie('user_no',$row['no'],time()+60*60*24,'/','.adma.kr');
 					//echo $query;
 					echo "2";
 				}
