@@ -8,11 +8,14 @@ class Orchid extends CI_Controller {
 
 	public function index()
 	{
-		$data = '';
-
-		$this->load->view('templates/header', $data);
-        $this->load->view('orchid/index', $data);
-
+		$data = '';		
+		if(isset($_COOKIE['user_no'])){
+			$this->load->view('templates/header', $data);
+    	    $this->load->view('orchid/index', $data);	
+		}else{
+			$this->load->view('templates/header', $data);
+    	    $this->load->view('orchid/join', $data);		
+		}
         print_r($_SESSION);
 	}
 

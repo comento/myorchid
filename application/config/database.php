@@ -74,10 +74,10 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'hostname' => 'localhost',
+	'hostname' => 'localhost:3333',
 	'username' => 'root',
-	'password' => 'he1193711',
-	'database' => 'calc2te',
+	'password' => '123456',
+	'database' => 'yujinee',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

@@ -14,4 +14,23 @@ class Actions extends CI_Controller {
                         print_r($row);
                 }
         }
+		
+		public function join()
+		{
+				$name = $_POST['name'];
+				$query = $this->actions_model->check_name($name);
+				//echo $query->num_rows()."adkdkdkd";
+				
+				if ($query->num_rows() > 0){		
+					echo "1";
+				}else{
+					$query = $this->actions_model->join($name);	
+					$row = $query->last_row();
+					setcookie('user_no',$row['no'],time()+60*60*24,'/','.adma.kr');
+					//echo $query;
+					echo "2";
+				}
+				
+		}
+		
 }
