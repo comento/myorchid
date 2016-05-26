@@ -25,7 +25,6 @@ class Actions extends CI_Controller {
 			echo "1";
 		}else{
 			$query = $this->actions_model->join($name);	
-			//$row = $query->last_row();
 			echo "2";
 		}				
 	}
