@@ -5,8 +5,6 @@ class Actions extends CI_Controller {
         parent:: __construct();
         $this->load->model('actions_model');
 		$this->load->library('session');
-		//$this->load->library('session');
-			
     }
 
     public function water() {
@@ -38,7 +36,7 @@ class Actions extends CI_Controller {
 
 			$row = $query->row_array();
 			$this->session->set_userdata($row);			
-
+			
 			echo "2";
 		}else{
 			echo "1";
