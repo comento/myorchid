@@ -21,11 +21,11 @@ class Actions extends CI_Controller {
 		$name = $_POST['name'];
 		$query = $this->actions_model->check_name($name);
 		
-		if ($query->num_rows() > 0){		
+		if ( $query->num_rows() > 0){		
 			echo "1";
 		}else{
 			$query = $this->actions_model->join($name);	
-			$row = $query->last_row();
+			//$row = $query->last_row();
 			echo "2";
 		}				
 	}
@@ -45,6 +45,12 @@ class Actions extends CI_Controller {
 			echo "1";
 		}	
 	}
+	
+	public function logout()
+	{
+		$this->session->sess_destroy();
+	}
+
 
 
 }
