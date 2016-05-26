@@ -25,10 +25,15 @@ class Actions_model extends CI_Model {
 	
 	public function join($name = NULL)
 	{
-	
 		$sql = "insert into myorchid (name, date) values (?, now())";
 		$query = $this->db->query($sql, array($name));
 		return $query;
-		//setCookie("user_no", );
+	}
+	
+	public function login($name = NULL)
+	{
+		$sql = "select * from myorchid where name = ?";
+		$query = $this->db->query($sql, array($name));
+		return $query;
 	}
 }
