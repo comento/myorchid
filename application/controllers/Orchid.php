@@ -17,14 +17,20 @@ class Orchid extends CI_Controller {
 	public function greenhouse()
 	{
 		$data = '';		
-		$this->load->view('templates/header', $data);
-		$user_no = $this->session->userdata('no');
-		//$row=print_r($this->session->all_userdata());
+		$this->load->view('templates/header', null);
 		
+		$user_no = $this->session->userdata('orchid_no');
+	
 		if(isset($user_no)){
+			$data['user_no'] = $user_no;
+			$data['name'] = $this->session->userdata('name');
+			$data['status_name'] = $this->session->userdata('status_name');		
+			$data['img'] = $this->session->userdata('img');	
+			$data['login_date'] = $this->session->userdata('login_date');	
+		
 		    $this->load->view('orchid/greenhouse', $data);
 		}else{
-		    $this->load->view('orchid/index', $data);			
+		    $this->load->view('orchid/index', null);			
 		}
 	}
 
