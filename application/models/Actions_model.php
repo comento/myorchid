@@ -17,7 +17,7 @@ class Actions_model extends CI_Model {
 			$sql = "select * from log_action where orchid_no = ?";
 			$query = $this->db->query($sql, array($no));			
 		} else {
-			$sql = "select * from log_action where orchid_no = ? and action = ?";
+			$sql = "select * from log_action where orchid_no = ? and action = ? order by date desc limit 1";
 			$query = $this->db->query($sql, array($no, $type));						
 		}
 
