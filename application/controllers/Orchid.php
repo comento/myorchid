@@ -6,6 +6,7 @@ class Orchid extends CI_Controller {
 		$this->load->library('session');
 	}
 
+	//인덱스 페이지
 	public function index()
 	{
 		$data = '';		
@@ -14,6 +15,7 @@ class Orchid extends CI_Controller {
 	
      }
 
+	//로그인 시 온실로 이동
 	public function greenhouse()
 	{
 		$data = '';		

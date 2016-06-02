@@ -10,8 +10,8 @@
 			<div><img src="#" alt="<?php echo $img?>" class="img-circle"></div>
 		</div>	
 		<button class="btn btn-info action-water" type="button">물주기</button>
-		<button class="btn btn-info action-clsean" type='button'>닦아주기</button>
-		<button class="btn btn-info action-nuturition" type="button" >영양주기</button>
+		<button class="btn btn-info action-clean" type='button'>닦아주기</button>
+		<button class="btn btn-info action-nutrition" type="button" >영양주기</button>
 		<button class="btn btn-warning action-logout" type="button">로그아웃</button>
 	</div>
 	<br>
