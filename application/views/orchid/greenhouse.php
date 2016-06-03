@@ -10,3 +10,15 @@
 <button class="btn btn-default action-logout" type="submit">로그아웃</button>
 
 <div class="testMsg"></div>
+
+<?php
+echo $slag;
+echo $random;
+/*
+if ($random == '') {
+	
+} else if ($random == '') {
+	
+}
+*/
+?>
