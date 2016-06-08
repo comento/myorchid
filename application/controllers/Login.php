@@ -7,8 +7,7 @@ class Login extends CI_Controller {
 		$this->load->model('actions_model');
 		$this->load->model('status_model');
 		$this->load->library('session');
-		$this->load->helper('date');
-    }
+	}
 	
 	//로그인
 	public function login(){

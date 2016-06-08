@@ -19,4 +19,10 @@ class Join_model extends CI_Model {
 		return $query;
 	}
 	
+
+	//난 삭제
+	public function deleteOrchid($no){
+		$sql = "delete from orchid where orchid_no = ?";
+		$query = $this->db->query($sql, array($no));
+	}
 }

@@ -5,12 +5,6 @@ class Status_model extends CI_Model {
 		$this->load->database();
 	}
 	
-	//죽는 조건 확인
-	public function checkDeath($no = NULL){
-		
-		return true;		
-	}
-	
 	//상태 업데이트
 	public function updateStatus($no, $status){
 		$sql = "update orchid set status = ? where orchid_no = ?";
@@ -24,5 +18,9 @@ class Status_model extends CI_Model {
 		return $query;
 	}
 	
-
+	//초기화
+	public function revival($no){
+		$sql = "update orchid set status = ?, birth = now() where orchid_no = ? ";
+		$query = $this->db->query($sql, array('1', $no));
+	}
 }

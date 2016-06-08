@@ -4,6 +4,7 @@ class Orchid extends CI_Controller {
 	{
     	parent::__construct();
 		$this->load->library('session');
+		$this->load->helper('date');
 	}
 
 	//인덱스 페이지
@@ -11,8 +12,14 @@ class Orchid extends CI_Controller {
 	{
 		$data = '';		
 		$this->load->view('templates/header', $data);
-	    $this->load->view('orchid/index', $data);		
+		$data = $this->session->all_userdata();
 	
+		if(isset($data['orchid_no'])){
+			$this->load->view('orchid/greenhouse', $data);
+		}else{
+		    $this->load->view('orchid/index', $data);				
+		}
+		
      }
 
 	//로그인 시 온실로 이동
@@ -24,12 +31,7 @@ class Orchid extends CI_Controller {
 		$user_no = $this->session->userdata('orchid_no');
 	
 		if(isset($user_no)){
-			$data['user_no'] = $user_no;
-			$data['name'] = $this->session->userdata('name');
-			$data['status_name'] = $this->session->userdata('status_name');		
-			$data['img'] = $this->session->userdata('img');	
-			$data['login_date'] = $this->session->userdata('login_date');	
-		
+			$data = $this->session->all_userdata();
 		    $this->load->view('orchid/greenhouse', $data);
 		}else{
 		    $this->load->view('orchid/index', null);			
