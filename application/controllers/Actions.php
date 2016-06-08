@@ -4,52 +4,53 @@ class Actions extends CI_Controller {
     public function __construct(){
         parent:: __construct();
         $this->load->model('actions_model');
+		$this->load->model('status_model');
 		$this->load->library('session');
-		//$this->load->library('session');
-			
     }
 
-    public function water() {
-        $query = $this->actions_model->action_water();
-        foreach ($query->result() as $row) {
-            print_r($row);
-        }
-    }
+	//액션
+    public function action() {
+    	$orchid_no = $this->input->post('orchid_no');	
+		$act_type = $this->input->post('act_type');	
+		$this->actions_model->setAction($orchid_no, $act_type);
 	
-	public function join()
-	{
-		$name = $_POST['name'];
-		$query = $this->actions_model->check_name($name);
+		if($this->session->userdata('status') == 1){
+			if($this->checkAdult($orchid_no)){ //성인이 될 조건을 만족하는가?
+				//$this->updateAdult($orchid_no); 
+				$this->status_model->updateStatus($orchid_no, 2);//status 업데이트 
+				$row = $this->status_model->getOrchid($orchid_no); 
+				$this->session->set_userdata($row->row_array());	
+			}
+		}     
+    }	
+	
+	public function checkAdult($no){
+		//액션 기록에 물주기 1 영양 주기 1 닦기가 1 번씩 있으면, 애기-> 성인으로 만들어준다.
+		$query = $this->actions_model->getActionlog($no, 'all');
+	
+		$clean_count = 0;
+		$nutrition_count = 0;
+		$water_count = 0;		
+		foreach ($query->result_array() as $row){
+		   if($row['action'] == 'water') $water_count++;
+		   else if($row['action'] == 'nutrition') $nutrition_count++;
+		   else if($row['action'] == 'clean') $clean_count++;	
+		}
 		
-		if ( $query->num_rows() > 0){		
-			echo "1";
+		if($clean_count > 0 && $nutrition_count > 0 && $water_count >0 ){
+			return true;
 		}else{
-			$query = $this->actions_model->join($name);	
-			echo "2";
-		}				
+			return false;
+		}
 	}
 	
-	public function login()
-	{
-		$name = $_POST['name'];
-		$query = $this->actions_model->login($name);
+	public function revival(){
+		$orchid_no = $this->input->post('orchid_no');
+	
+		$this->status_model->revival($orchid_no);	
+		$row = $this->status_model->getOrchid($orchid_no); 
 		
-		if( $query->num_rows() > 0 ) {
-
-			$row = $query->row_array();
-			$this->session->set_userdata($row);			
-
-			echo "2";
-		}else{
-			echo "1";
-		}	
+		$this->session->set_userdata($row->row_array());		
 	}
-	
-	public function logout()
-	{
-		$this->session->sess_destroy();
-	}
-
-
 
 }
