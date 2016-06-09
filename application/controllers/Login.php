@@ -12,27 +12,29 @@ class Login extends CI_Controller {
 	//로그인
 	public function login(){
 		$name = $this->input->post('name');
-		$query = $this->login_model->login($name);
+		if(isset($name)){
+			$query = $this->login_model->login($name);
 		
-		if(isset($query)) { //로그인 성공
-			$single_column = $query->row();
-			$no = $single_column->orchid_no;
-			$row = $query->row_array();
-
-
-			$status = $this->getStatus($no, $row);
-			if($status > 0){
-				$this->status_model->updateStatus($no, $status); 
-				$query = $this->status_model->getOrchid($no); 	
-				$row = $query->row_array();	
-			} 
-			
-			$this->session->set_userdata($row);	
-						
-			echo "2";
-		}else{ //로그인 실패
-			echo "1";
-		}	
+			if(isset($query)) { //로그인 성공
+				$single_column = $query->row();
+				$no = $single_column->orchid_no;
+				$row = $query->row_array();
+	
+				$status = $this->getStatus($no, $row);
+				if($status > 0){
+					$this->status_model->updateStatus($no, $status); 
+					$query = $this->status_model->getOrchid($no); 	
+					$row = $query->row_array();	
+				} 
+				
+				$this->session->set_userdata($row);	
+							
+				echo "2";
+			}else{ //로그인 실패
+				echo "1";
+			}	
+				
+		}
 	}
 	
 	//로그아웃

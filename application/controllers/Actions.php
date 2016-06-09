@@ -12,16 +12,18 @@ class Actions extends CI_Controller {
     public function action() {
     	$orchid_no = $this->input->post('orchid_no');	
 		$act_type = $this->input->post('act_type');	
-		$this->actions_model->setAction($orchid_no, $act_type);
+		if(isset($orchid_no,$act_type)){
+			$this->actions_model->setAction($orchid_no, $act_type);
 	
-		if($this->session->userdata('status') == 1){
-			if($this->checkAdult($orchid_no)){ //성인이 될 조건을 만족하는가?
-				$this->status_model->updateStatus($orchid_no, 2);//status 업데이트 
-				$row = $this->status_model->getOrchid($orchid_no); 
-				$this->session->set_userdata($row->row_array());
-				echo "1";	
-			}
-		}     
+			if($this->session->userdata('status') == 1){
+				if($this->checkAdult($orchid_no)){ //성인이 될 조건을 만족하는가?
+					$this->status_model->updateStatus($orchid_no, 2);//status 업데이트 
+					$row = $this->status_model->getOrchid($orchid_no); 
+					$this->session->set_userdata($row->row_array());
+					echo "1";	
+				}
+			}     	
+		}
     }	
 	
 	public function checkAdult($no){
@@ -46,11 +48,12 @@ class Actions extends CI_Controller {
 	
 	public function revival(){
 		$orchid_no = $this->input->post('orchid_no');
-	
-		$this->status_model->revival($orchid_no);	
-		$row = $this->status_model->getOrchid($orchid_no); 
-		
-		$this->session->set_userdata($row->row_array());		
+		if(isset($orchid_no)){
+			$this->status_model->revival($orchid_no);	
+			$row = $this->status_model->getOrchid($orchid_no); 
+			
+			$this->session->set_userdata($row->row_array());					
+		}
 	}
 
 }
