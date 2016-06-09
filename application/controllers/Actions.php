@@ -16,10 +16,10 @@ class Actions extends CI_Controller {
 	
 		if($this->session->userdata('status') == 1){
 			if($this->checkAdult($orchid_no)){ //성인이 될 조건을 만족하는가?
-				//$this->updateAdult($orchid_no); 
 				$this->status_model->updateStatus($orchid_no, 2);//status 업데이트 
 				$row = $this->status_model->getOrchid($orchid_no); 
-				$this->session->set_userdata($row->row_array());	
+				$this->session->set_userdata($row->row_array());
+				echo "1";	
 			}
 		}     
     }	

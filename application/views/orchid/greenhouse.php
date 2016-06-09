@@ -10,14 +10,35 @@ $day_diff = ($diff->days) +1;
 
 <div class='col-md-6'>
 	<br>
+	
 	<div class="panel panel-primary text-center">
-		<div class="panel-heading"><h3 class="panel-title"><?php echo $name;?></h3>(<?php echo $day_diff."일차";?>)</div>
+		<div class="panel-heading"><span class='glyphicon glyphicon-leaf'><h3 class="panel-title"><?php echo $name;?></span></h3>(<?php echo $day_diff."일차";?>)</div>
 		<div class="panel-body">
-			난의 상태:<?php echo $status_name;?><br>
+			<b><?php echo $name?></b>의 상태:<?php echo $status_name;?><br>
 			마지막 로그인:<?php echo $login_date;?><br>
 			<div id='orchid_house'>
-				<img src="../<?php echo $img?>" alt="<?php echo $img?>">
-				<img src="#" style='display:none'>
+				<?php
+					$special_names = array("유진","창섭","재성","다린","진규","조은","다혜");
+					$img_url = array("yjjang.jpg","csbg.png","js.png","linda.png","aka.png","jenny.png","dana.jpg");
+					$key_num;
+					foreach($special_names as $key=>$value){
+						if(strpos($name, $value) !== false){
+							$key_num = $key;
+						}
+					}
+					if(isset($key_num)){			
+				?>	
+					<img src="../images/members/<?php echo $img_url[$key_num];?>" alt="<?php echo $name?>" style ='width:25%' class='character'>	
+				<?php
+				}else{?>
+					<img src="../<?php echo $img?>" alt="<?php echo $img?>" class='character'>
+				<?php	
+				}
+				?>
+			</div>
+			<div id ='event_div' style='display:none;'>
+				<div class="alert alert-warning alert-dismissible" role="alert">
+				</div>
 			</div>
 		</div>
 		<?php
@@ -40,8 +61,10 @@ $day_diff = ($diff->days) +1;
 			}
 		?>
 		<br><br>
+		
 		<button class="btn btn-warning action-logout" type="button">로그아웃</button>
-		<button class="btn btn-default action-kill" type="button">이 난을 포기</button>
+		<button class="btn btn-default action-kill" type="button">이 난을 포기<span class='glyphicon glyphicon-trash'></span></button>
+		<div class='clear'>&nbsp;</div>
 	</div>
 	<br>
 </div>
